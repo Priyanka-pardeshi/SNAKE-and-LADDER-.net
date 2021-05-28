@@ -11,13 +11,11 @@ namespace SnakeANDladder
         public void Play()
         {
             Console.WriteLine("All the best For Game Play! ");
-            int start = 0;
-            //Console.WriteLine("You're initially at "+start);
+            int start = 0,stepCount=0;
+          
             Random objRandom = new Random();
 
             //roll dice
-           // int dice = objRandom.Next(1,6);
-
             while (start >= 0 & start <= 100)
             {
                 int dice = objRandom.Next(1, 6);
@@ -26,14 +24,18 @@ namespace SnakeANDladder
                 if (answer == "y")
                 {
                     //Choice to check its snake or ladder
+                    stepCount = stepCount + 1;
                     int choice = objRandom.Next(1, 2);
                     switch (choice)
                     {
+                        //Ladder
                         case 1:
                             start = start + dice;
+                            
                             if (start >= 100)
                             {
-                                Console.WriteLine("Congratulations ! You're winner :) ");
+                                Console.WriteLine("Congratulations ! You're winner :) step to win are "+stepCount);
+
                                 break;
 
                             }
@@ -47,6 +49,7 @@ namespace SnakeANDladder
                             }
                             break;
 
+                        //Snake
                         case 2:
                             if (start < 0)
                             {
@@ -58,19 +61,21 @@ namespace SnakeANDladder
                             }
                             Console.WriteLine("Oops its Snake. and your score is:" + start);
                             break;
+
+                        //default
                         case 3:
                             break;
                         default:
                             Console.WriteLine("invalid choice");
                             break;
-                    }
+                    }// switch close 
                 }
                 else
                 {
                     Console.WriteLine("You'll reamain at same position " + start);
-                }
-            }
+                }//if "n" closed  
+            }//while closed
             
-        }
+        }//play method closed 
     }
 }
