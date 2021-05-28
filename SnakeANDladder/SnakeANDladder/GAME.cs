@@ -14,8 +14,46 @@ namespace SnakeANDladder
             int start = 0;
             //Console.WriteLine("You're initially at "+start);
             Random objRandom = new Random();
-            int dice = objRandom.Next(1,6);
-            Console.WriteLine("Your Dice number is:"+dice);
+
+            //roll dice
+            int dice = objRandom.Next(1,6);            
+            Console.WriteLine("Your dice number is " + dice + " Do Yoy wanna play?? y/n");
+            String answer = Convert.ToString(Console.ReadLine());
+            if (answer == "y")
+            {          
+                //Choice to check its snake or ladder
+                int choice = objRandom.Next(1, 2);
+                switch (choice)
+                {
+                    case 1:         
+                        start = start + dice;
+                        Console.WriteLine("Congo its Ladder.And your score is:" + start);
+                        break;
+
+                    case 2:                     
+                        if (start < 0)
+                        {
+                            Console.WriteLine("Lose");
+                        }
+                        else
+                        {
+                            start = start - dice;
+                        }
+                        Console.WriteLine("Oops its Snake. and your score is:"+start);
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        Console.WriteLine("invalid choice");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("You'll reamain at same position "+start);
+            }
+
+            
         }
     }
 }
